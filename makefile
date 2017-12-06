@@ -6,7 +6,7 @@
 
 # Nom des dossiers pour les headers, les sources et les objets
 SRCDIR=src
-HEADDIR=headers
+HEADDIR=header
 OBJDIR=obj
 BINDIR=bin
 
