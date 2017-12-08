@@ -82,8 +82,6 @@ void typeI_to_hexa(char operande[], char *token, char instruction[]) {
             strcpy(operande, token+1);
         
         offset = atoi(operande);
-        
-        printf("rt = %d, rs = %d, offset = %d\n", rt, rs, offset);
     }
         
     if (typeI == 2) {
@@ -104,8 +102,6 @@ void typeI_to_hexa(char operande[], char *token, char instruction[]) {
             offset = atoi(operande);
             
         rt = 0;
-            
-        printf("rs = %d, offset = %d\n", rs, offset);
     }
         
     if (typeI == 3) {
@@ -126,8 +122,6 @@ void typeI_to_hexa(char operande[], char *token, char instruction[]) {
             offset = atoi(operande+1);
             
         rs = 0;
-            
-        printf("rt = %d, offset = %d\n", rt, offset);
     }
         
     if (typeI == 4) {                
@@ -155,8 +149,6 @@ void typeI_to_hexa(char operande[], char *token, char instruction[]) {
         *token = '\0';
             
         rs = atoi(operande+1);
-            
-        printf("rt = %d, rs = %d, offset = %d\n", rt, rs, offset);
     }
         
     /* traduction en binaire */

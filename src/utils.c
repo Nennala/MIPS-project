@@ -33,3 +33,35 @@ int is_hexa(char operande[]) {
     
     return hexa;
 }
+
+int hexa_to_int(const char in_hex[], int len) {
+    int i;
+    int tmp_int = 0;
+    int result = 0;
+    
+    for (i = 0; i < len; i++) {
+        if (isalpha(in_hex)) {
+            switch (toupper(in_hex[i])) {
+                case 'A' :
+                    tmp_int = 10;
+                    break;
+                case 'B' :
+                    tmp_int = 11;
+                    break;
+                case 'C' :
+                    tmp_int = 12;
+                    break;
+                case 'D' :
+                    tmp_int = 13;
+                    break;
+                case 'E' :
+                    tmp_int = 14;
+                    break;
+                case 'F' :
+                    tmp_int = 15;
+                    break;
+            }
+        }
+        else {
+            
+}
