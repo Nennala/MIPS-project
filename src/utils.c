@@ -40,7 +40,7 @@ int hexa_to_int(const char in_hex[], int len) {
     int result = 0;
     
     for (i = 0; i < len; i++) {
-        if (isalpha(in_hex)) {
+        if (isalpha(in_hex[i])) {
             switch (toupper(in_hex[i])) {
                 case 'A' :
                     tmp_int = 10;
@@ -63,5 +63,9 @@ int hexa_to_int(const char in_hex[], int len) {
             }
         }
         else {
-            
+            tmp_int = in_hex[i] - '0';
+        }
+        result += tmp_int*pow(16,len-i-1);
+    }
+    return result;
 }

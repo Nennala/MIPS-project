@@ -34,6 +34,8 @@
 #define MFHI "010000"
 #define MFLO "010010"
 #define JR "001000"
+#define NOP "000000"
+#define SYSCALL "001100"
 
 /* Taille de tableaux */
 #define MAX_SIZE 32

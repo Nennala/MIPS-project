@@ -8,7 +8,7 @@ const char name[] = "test.txt";
 
 int main(int argc, char *argv[]) {
     int i;
-    char *token;
+    char *token = NULL;
     char operande[MAX_SIZE] = ""; 
     char instruction[MAX_SIZE] = "";
     
@@ -28,7 +28,12 @@ int main(int argc, char *argv[]) {
             }
             if (i != 32 && operande[0] != '\n') {
                 token = strchr(operande, ' ');
-                *token = '\0';
+                if (token != NULL)
+                    *token = '\0';
+                else {
+                    token = strchr(operande, '\n');
+                    *token = '\0';
+                }
             
                 if (operande[0] != '#') {
                     type = type_instruction(operande);
@@ -39,7 +44,7 @@ int main(int argc, char *argv[]) {
                     if (type == 'J')
                         typeJ_to_hexa(operande, token, instruction);
                     if (type == 'R')
-                        typeR_to_hexa(operande, token, instruction);            
+                        typeR_to_hexa(operande, token, instruction);
         
                     printf("%08x\n", to_int(instruction, 32));
                 }

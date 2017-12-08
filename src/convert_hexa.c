@@ -254,7 +254,23 @@ void typeR_to_hexa(char operande[], char *token, char instruction[]) {
         strcat(fonctions,JR);
         typeR = 5;
     }
-            
+    if (strcmp(operande,"NOP") == 0) {
+        strcat(fonctions,NOP);
+        rs = 0;
+        rt = 0;
+        rd = 0;
+        sa = 0;
+    }
+    if (strcmp(operande,"SYSCALL") == 0) {
+        strcat(fonctions,SYSCALL);
+        /* pour l'instant mis à zéro car pas de connaissance
+         * des codes du syscall */
+        rs = 0;
+        rt = 0;
+        rd = 0;
+        sa = 0;
+    }
+    
     strcat(instruction,"000000");
     
     if (typeR == 1) {
