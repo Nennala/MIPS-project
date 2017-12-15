@@ -1,5 +1,9 @@
-#ifndef UTILS_H
-#define UTILS_H
+/* -----------------------------------------
+ * Nom : Porteries Daphné, Champey Vincent 
+ * ----------------------------------------- */
+
+#ifndef _UTILITAIRE_H
+#define _UTILITAIRE_H
 
 #include <math.h>
 #include <stdlib.h>
@@ -13,5 +17,7 @@ int to_int(const char in_binary[], int len);
 int is_hexa(char operande[]);
 
 int hexa_to_int(const char in_hex[], int len);
+
+int complement2(const int src, char out_binary[], int len);
 
 #endif

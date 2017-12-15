@@ -1,4 +1,8 @@
-#include "../header/utils.h"
+/* -----------------------------------------
+ * Nom : Porteries Daphné, Champet Vincent 
+ * ----------------------------------------- */
+
+#include "../header/utilitaire.h"
 
 void to_binary(const int src, char out_binary[], int len) {
     int nb = src;
@@ -69,3 +73,4 @@ int hexa_to_int(const char in_hex[], int len) {
     }
     return result;
 }
+    

@@ -1,8 +1,13 @@
-#include "../header/utils.h"
-#include "../header/convert_hexa.h"
+/* -----------------------------------------
+ * Nom : Porteries Daphné, Champey Vincent 
+ * ----------------------------------------- */
+
+#include "../header/utilitaire.h"
+#include "../header/hexa.h"
 
 #define MAX_SIZE 32
 #define MAX_SIZE_FILE 100
+#define MEMORY_SIZE 1000000000
 
 const char name[] = "test.txt";    
 

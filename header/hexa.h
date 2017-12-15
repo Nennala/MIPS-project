@@ -1,9 +1,13 @@
+/* -----------------------------------------
+ * Nom : Porteries Daphné, Champey Vincent 
+ * ----------------------------------------- */
+
 #ifndef CONVERT_HEXA_H
 #define CONVERT_HEXA_H
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "utils.h"
+#include "utilitaire.h"
 
 /* Type I */
 #define ADDI "001000"

@@ -1,4 +1,8 @@
-#include "../header/convert_hexa.h"
+/* -----------------------------------------
+ * Nom : Porteries Daphné, Champey Vincent 
+ * ----------------------------------------- */
+
+#include "../header/hexa.h"
 
 char type_instruction(char instruction[]) {
     char type = 0;
