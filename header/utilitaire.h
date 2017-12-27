@@ -18,6 +18,8 @@ int is_hexa(char operande[]);
 
 int hexa_to_int(const char in_hex[], int len);
 
-int complement2(const int src, char out_binary[], int len);
+void add_one(char binary[], int len);
+
+void complement2(char binary[], int len);
 
 #endif

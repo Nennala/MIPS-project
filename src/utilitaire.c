@@ -73,4 +73,37 @@ int hexa_to_int(const char in_hex[], int len) {
     }
     return result;
 }
+
+void add_one(char binary[], int len) {
+    int num, carry, i;
+    char *tmp_binary = malloc(len*sizeof(char));
     
+    carry = 1;
+    
+    for (i = len-1; i >= 0; i--) {
+        num = binary[i] - 48;
+        num = (num+carry)%2;
+        if (num == 1 && carry == 1)
+            carry = 0;
+        if (num == 0 && carry == 1)
+            carry = 1;
+        tmp_binary[i] = num + 48;
+    }
+    strcpy(binary,tmp_binary);
+    free(tmp_binary);
+}
+    
+void complement2(char binary[], int len) {
+    char *tmp_binary = malloc(len*sizeof(char));
+    for (int i = 0; i < len; i++) {
+        if (binary[i] == '0')
+            tmp_binary[i] = '1';
+        else
+            tmp_binary[i] = '0';
+    }
+    add_one(tmp_binary,len);
+    
+    strcpy(binary, tmp_binary);
+    free(tmp_binary);
+}
+
