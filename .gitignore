@@ -1,0 +1,4 @@
+# exclude all the kdevelop project files
+MIPS-project.kdev4
+.kdev4/*
+ 
