@@ -19,6 +19,10 @@ int is_hexa(char operande[]);
 
 int hexa_to_int(const char in_hex[], int len);
 
+void hexa_to_bin(const char in_hex[], int len, char out_bin[]);
+
+int hexa_to_bin_to_int(const char in_hex[], int len);
+
 void add_one(char binary[], int len);
 
 void complement2(char binary[], int len);

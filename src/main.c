@@ -12,7 +12,7 @@
 #define MEMORY_SIZE 1000000000
 
 const char name[] = "test.txt";
-int mode = 1; /* 1 = pas à pas, 0 = fichier */
+int mode = 0; /* 1 = pas à pas, 0 = fichier */
 
 int main(int argc, char *argv[]) {
     int i;

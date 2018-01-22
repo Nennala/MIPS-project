@@ -18,7 +18,8 @@ char type_instruction(char instruction[]) {
 
 void typeI_to_hexa(char operande[], char *token, char instruction[]) {
     int typeI = 0;
-    /* typeI 1 : BEQ, BNE, ADDI
+    /* typeI 0 : ADDI
+     * typeI 1 : BEQ, BNE
      * typeI 2 : BLEZ, BGTZ
      * typeI 3 : LUI
      * typeI 4 : LW, SW
@@ -32,7 +33,7 @@ void typeI_to_hexa(char operande[], char *token, char instruction[]) {
     
     if (strcmp(operande, "ADDI") == 0) {
         strcat(instruction, ADDI);
-        typeI = 1;
+        typeI = 0;
     }
     if (strcmp(operande, "BNE") == 0) {
         strcat(instruction, BNE);
@@ -63,7 +64,7 @@ void typeI_to_hexa(char operande[], char *token, char instruction[]) {
         typeI = 4;
     }
     
-    if (typeI == 1) {
+    if (typeI == 0) {
         strcpy(operande,token+1);
         token = strchr(operande, ',');
         *token = '\0';
@@ -85,7 +86,48 @@ void typeI_to_hexa(char operande[], char *token, char instruction[]) {
         else
             strcpy(operande, token+1);
         
-        offset = atoi(operande);
+        if (is_hexa(operande)) {
+            offset = hexa_to_bin_to_int(operande+2, 2);
+        }
+        else if (*operande == '-') { 
+            offset = -1*atoi(operande+1);
+        }
+        else {
+            offset = atoi(operande);
+        }
+    }
+    
+    if (typeI == 1) {
+        strcpy(operande,token+1);
+        token = strchr(operande, ',');
+        *token = '\0';
+    
+        rs = atoi(operande+1);
+    
+        if (*(token+1) == ' ')
+            strcpy(operande, token+2);
+        else
+            strcpy(operande, token+1);
+        
+        token = strchr(operande, ',');
+        *token = '\0';
+        
+        rt = atoi(operande+1);
+        
+        if (*(token+1) == ' ')
+            strcpy(operande, token+2);
+        else
+            strcpy(operande, token+1);
+        
+        if (is_hexa(operande)) {
+            offset = hexa_to_bin_to_int(operande+2, 2);
+        }
+        else if (*operande == '-') { 
+            offset = -1*atoi(operande+1);
+        }
+        else {
+            offset = atoi(operande);
+        }
     }
         
     if (typeI == 2) {
@@ -100,10 +142,15 @@ void typeI_to_hexa(char operande[], char *token, char instruction[]) {
         else
             strcpy(operande,token+1);
         
-        if (is_hexa(operande))
-            offset = atoi(operande+2);
-        else
+        if (is_hexa(operande)) {
+            offset = hexa_to_bin_to_int(operande+2, 2);
+        }
+        else if (*operande == '-') { 
+            offset = -1*atoi(operande+1);
+        }
+        else {
             offset = atoi(operande);
+        }
             
         rt = 0;
     }
@@ -120,10 +167,15 @@ void typeI_to_hexa(char operande[], char *token, char instruction[]) {
         else
             strcpy(operande,token+1);
         
-        if (is_hexa(operande))
-            offset = atoi(operande+2);
-        else
-            offset = atoi(operande+1);
+        if (is_hexa(operande)) {
+            offset = hexa_to_bin_to_int(operande+2, 2);
+        }
+        else if (*operande == '-') { 
+            offset = -1*atoi(operande+1);
+        }
+        else {
+            offset = atoi(operande);
+        }
             
         rs = 0;
     }
@@ -143,10 +195,15 @@ void typeI_to_hexa(char operande[], char *token, char instruction[]) {
         token = strchr(operande, '(');
         *token = '\0';
         
-        if (is_hexa(operande))
-            offset = atoi(operande+2);
-        else
+        if (is_hexa(operande)) {
+            offset = hexa_to_bin_to_int(operande+2, 2);
+        }
+        else if (*operande == '-') { 
+            offset = -1*atoi(operande+1);
+        }
+        else {
             offset = atoi(operande);
+        }
     
         strcpy(operande,token+1);
         token = strchr(operande, ')');
@@ -160,7 +217,12 @@ void typeI_to_hexa(char operande[], char *token, char instruction[]) {
     strcat(instruction, tmp_reg);
     to_binary(rt, tmp_reg, 5);
     strcat(instruction, tmp_reg);
-    to_binary(offset, tmp_reg, 16);
+    if (offset < 0) {
+        to_binary(-1*offset, tmp_reg, 16);
+        complement2(tmp_reg, 16);
+    }
+    else
+        to_binary(offset, tmp_reg, 16);
     strcat(instruction, tmp_reg);
 }
 

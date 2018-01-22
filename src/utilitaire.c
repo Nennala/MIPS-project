@@ -74,6 +74,52 @@ int hexa_to_int(const char in_hex[], int len) {
     return result;
 }
 
+void hexa_to_bin(const char in_hex[], int len, char out_bin[]) {
+    int i;
+    char *tmp_bin = "";
+    
+    strcat(out_bin,"");
+    
+    for (i = 0;i < len;i++) {
+        switch (toupper(in_hex[i])) {
+            case 'A':
+                strcpy(tmp_bin,"1010");
+                break;
+            case 'B':
+                strcpy(tmp_bin,"1011");
+                break;
+            case 'C':
+                strcpy(tmp_bin,"1100");
+                break;
+            case 'D':
+                strcpy(tmp_bin,"1101");
+                break;
+            case 'E':
+                strcpy(tmp_bin,"1110");
+                break;
+            case 'F':
+                strcpy(tmp_bin,"1111");
+                break;
+        }
+        strcat(out_bin,tmp_bin);
+    }
+}
+
+int hexa_to_bin_to_int(const char in_hex[], int len) {
+    char *out_bin = "";
+    int neg = 1;
+    int out_int = 0;
+    
+    hexa_to_bin(in_hex, len, out_bin);
+    if (out_bin[0] == '1') {
+        complement2(out_bin,len*4);
+        neg = -1;
+    }
+    out_int = to_int(out_bin,len*4);
+    
+    return neg*out_int;
+}
+
 void add_one(char binary[], int len) {
     int num, carry, i;
     char *tmp_binary = malloc(len*sizeof(char));
