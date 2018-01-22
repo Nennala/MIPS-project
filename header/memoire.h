@@ -5,15 +5,26 @@
 #ifndef _MEMOIRE_H
 #define _MEMOIRE_H
 
+#define MAX_SIZE 32
+
 #include "utilitaire.h"
 
-char** memoire;
+typedef struct case_memoire case_memoire;
+struct case_memoire {
+    char valeur[MAX_SIZE];
+    char etiquette[MAX_SIZE];
+    case_memoire *suivant;
+};
 
-char* lireMemoire(int PC, int NbBits);
+extern case_memoire* memoireInst;
+extern case_memoire* memoireData;
 
-void ecrireMemoire (int PC, char chaine[]);
+int lireMemoire(char etiquette[], char valeur[], case_memoire *memoire);
 
-/* Nous ne savons pas encore si nous allons différencier en plusieurs fonctions pour la lecture de mémoire d'instructions et celle de données,
- * on est donc potentiellement amené à en rajouter pendant l'écriture du programme. */
+int ecrireMemoire (char etiquette[], char valeur[], case_memoire *memoire);
+
+int elementExiste(char etiquette[], case_memoire *memoire);
+
+int tailleMemoire();
 
 #endif

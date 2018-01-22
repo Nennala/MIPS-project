@@ -1,5 +1,5 @@
 /* -----------------------------------------
- * Nom : Porteries Daphné, Champet Vincent 
+ * Nom : Porteries Daphné, Champey Vincent 
  * ----------------------------------------- */
 
 #include "../header/utilitaire.h"
