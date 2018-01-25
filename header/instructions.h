@@ -1,5 +1,5 @@
 /* -----------------------------------------
- * Nom : Porteries Daphné, Champey Vincent 
+ * Nom : Porteries Daphné, Champey Vincent
  * ----------------------------------------- */
 
 #ifndef _INSTRUCTIONS_H
@@ -9,15 +9,39 @@
 #include "registres.h"
 #include "utilitaire.h"
 
-#define TAILLE_TABLEAU_OPERANDE 5
+/* Équivalence numéro/instructions */
+#define ADD 1
+#define AND 2
+#define DIV 3
+#define JR 4
+#define MFHI 5
+#define MFLO 6
+#define MULT 7
+#define NOP 8
+#define OR 9
+#define SRL 10
+#define SLL 11
+#define SLT 12
+#define ROTR 13
+#define SUB 14
+#define SYSCALL 15
+#define XOR 16
+#define ADDI 17
+#define BEQ 18
+#define BGTZ 19
+#define BLEZ 20
+#define BNE 21
+#define LUI 22
+#define LW 23
+#define SW 24
+#define J 25
+#define JAL 26
 
 int nomInstruction(char mot[]);
-	/*retourne un int qui correspond à une certaine instruction*/
+	/*retourne un int qui correspond a une certaine instruction*/
 
-int* operande(char mot[]);
-	/*retourne un tableau de 5 cases : ['R', rs, rd, rt, sa] OU ['I', rs, rt, immediate, 0] OU ['J', target, 0, 0, 0]*/
+void operande(char mot[]);
+  /*détermine les valeurs des opérandes suivant le type d'instruction et exécute cette instruction*/
 
-void execute(char tableau[], int taille);
-	/*utilise les fonctions des fichiers memoireInstr.h, memoireData.h, et registres.h pour executer l'instruction*/
 
 #endif

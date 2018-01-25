@@ -8,6 +8,7 @@
 #include "utilitaire.h"
 
 #define TAILLE_TABLEAU_REG 35
+#define TAILLE_ELEM 32
 #define ZERO 0
 #define AT 1
 #define V0 2
@@ -48,14 +49,12 @@ extern int registre[TAILLE_TABLEAU_REG];
 
 extern char *nomReg[TAILLE_TABLEAU_REG];
 
-int numRegistre(char nom[]);
-
 void afficherRegistre();
 
-int lireRegistre(char nom[]);
+int lireRegistre(int nom);
 	/*ouvre le registre demandé et retourne sa valeur*/
 
-void ecrireRegistre(int valeur, char nom[]);
+void ecrireRegistre(int valeur, int nom);
 	/*remplace la valeur du registre demandé par la valeur*/
     
 void initialisationReg();
